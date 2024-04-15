@@ -55,8 +55,7 @@ def check_winner(board, player):
 	return False
 
 
-# TODO: Unused player_symbol. Remove it as it is not used.
-def player_move(board, player_symbol):
+def player_move(board,):
 	while True:
 		player_move_input = input('\nEnter your move (1-9): ')
 		if player_move_input.isdigit() and 1 <= int(player_move_input) <= 9:
@@ -73,9 +72,6 @@ def computer_random_move(board):
 	empty_cells = [i for i in range(9) if board[i] == ' ']
 	if empty_cells:
 		return random.choice(empty_cells)
-	# TODO: It will be OK if you just leave out else and return None. Same effect, less lines
-	else:
-		return None
 
 
 def computer_winning_move(board, computer_symbol):
@@ -85,8 +81,6 @@ def computer_winning_move(board, computer_symbol):
 			if check_winner(board, computer_symbol):
 				return i
 			board[i] = ' '
-	# TODO: It will be OK if you just leave out return None. Same effect, less lines
-	return None
 
 
 def computer_blocking_move(board, player_symbol, computer_symbol):
@@ -97,13 +91,10 @@ def computer_blocking_move(board, player_symbol, computer_symbol):
 				board[i] = computer_symbol
 				return i
 			board[i] = ' '
-	# TODO: It will be OK if you just leave out return None. Same effect, less lines.
-	#  If nothing will be returned, the function's value will be None
-	return None
+
 
 
 def computer_move(board, computer_symbol, player_symbol):
-	# TODO: As every return value means something else, I would split that in three separate functions.
 	winning_move = computer_winning_move(board, computer_symbol)
 	if winning_move:
 		return winning_move
@@ -134,7 +125,7 @@ def tic_tac_toe():
 			print_board(board)
 
 			if current_player == player_symbol:
-				player_position = player_move(board, player_symbol)
+				player_position = player_move(board,)
 				board[player_position] = player_symbol
 
 				if check_winner(board, player_symbol):
